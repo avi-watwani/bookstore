@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session["user_id"] = @user.id
+        session[:locale] = @user.locale
         format.html { redirect_to store_index_path, notice: "User #{@user.full_name} was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
